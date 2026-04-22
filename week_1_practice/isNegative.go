@@ -4,7 +4,7 @@ import (
 	"fmt"
 )
 
-// this function print T if the number passed is a nagative number other wise it print F
+/this function print T if the number passed is a nagative number other wise it print F
 func IsNegative(nb int) {
 
 	if nb < 0 {
