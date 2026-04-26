@@ -4,14 +4,13 @@ import (
 	"bufio"
 	"fmt"
 	"os"
+	"strings"
 )
 
 func main() {
 
-	var bannerFont string
-
-	inputfile := os.Args[1]
-	bannerFont = os.Args[2]
+	input := os.Args[1]
+	bannerFont := os.Args[2]
 
 	file, err := os.Open(bannerFont)
 
@@ -19,6 +18,8 @@ func main() {
 		fmt.Println("Error opening file, ", err)
 		return
 	}
+
+	defer file.Close()
 
 	scanner := bufio.NewScanner(file)
 
@@ -28,17 +29,25 @@ func main() {
 		lines = append(lines, scanner.Text())
 	}
 
-	for row := 1; row < 9; row++ {
+	result := strings.Split(input, `\n`)
 
-		for _, r := range inputfile {
+	for i := 0; i < len(result); i++ {
 
-			index := int(r - 32)
-			start := index * 9
-
-			fmt.Print(lines[start+row])
+		if result[i] == "" {
+			fmt.Println()
+			continue
 		}
-		fmt.Println()
-	}
 
-	//fmt.Println("samuel\n\nhow")
+		for row := 1; row <= 8; row++ {
+
+			for _, r := range result[i] {
+				index := int(r - 32)
+
+				start := index * 9
+
+				fmt.Print(lines[start+row])
+			}
+			fmt.Println()
+		}
+	}
 }
