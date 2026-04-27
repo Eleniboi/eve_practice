@@ -23,14 +23,14 @@ func main() {
 	}
 
 	var average float64
-	if score > 0 {
+	if len(currentscore) > 0{
 
 		count := len(currentscore)
 
-		average = float64(score) / float64(count)
+		average = float64(total) / float64(count)
 	}
 
 	fmt.Println("currentscore: ", currentscore)
 	fmt.Println("total: ", total)
-	fmt.Println("average: ", average)
+	fmt.Printf("average: %2.1f", average)
 }
