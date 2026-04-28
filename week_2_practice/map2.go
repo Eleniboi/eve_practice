@@ -5,25 +5,34 @@ import (
 )
 
 func main() {
-	//this function check how many times a word appears in a slice and record it in a map
 
-	words := []string{"map", "go", "map", "go", "map", "staff"}
+	//this function check 
 
-	count := make(map[string]int) // an empty map with a key of type string and a value of type int
+	availablefruit := []string{"banana", "mango", "apple", "banana", "apple", "mango", "banana", "melon"}
 
-	for _, word := range words {
+	record := make(map[string]int)
 
-		if word == "map" { // if the loop finds map it save it in the map and how many time it was found
-			count["map"]++
-		}
-		if word == "go" {
-			count["go"]++
-		}
-		if word == "staff" {
+	for _, item := range availablefruit {
 
-		}
+		record[item]++
 	}
-	fmt.Println(count)
+	record["sweet"] = 0
+	fmt.Println(record)
 
+	list := "sweet"
+
+	amount, exist := record[list]
+
+	if !exist {
+
+		fmt.Printf("we don't sell %s here\n", list)
+	} else if amount == 0 {
+		fmt.Printf("we sell %s but current out of stuck\n", list)
+	} else {
+		fmt.Printf("we have %s only %d available\n", list, amount)
+	}
+
+	for ch, i := range record {
+		fmt.Printf("%s: %d \n", ch, i)
+	}
 }
-
