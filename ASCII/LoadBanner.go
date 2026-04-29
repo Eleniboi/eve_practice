@@ -8,20 +8,13 @@ import (
 
 func LoadBanner(bannerFont string) []string {
 
-	bannerFont = os.Args[2]
-
-	if len(os.Args) == 2 {
-		bannerFont = "standard.txt"
-	}
-	if len(os.Args) == 0 {
-		return os.Args
-	}
-
 	file, err := os.Open(bannerFont)
 
 	if err != nil {
 		log.Fatal()
 	}
+
+	defer file.Close()
 
 	scanner := bufio.NewScanner(file)
 
@@ -30,5 +23,10 @@ func LoadBanner(bannerFont string) []string {
 
 		lines = append(lines, scanner.Text())
 	}
+	err = scanner.Err()
+	if err != nil {
+		log.Fatal()
+	}
+
 	return lines
 }
