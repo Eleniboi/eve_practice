@@ -2,7 +2,7 @@ package main
 
 import (
 	"bufio"
-	"log"
+	"fmt"
 	"os"
 )
 
@@ -11,7 +11,7 @@ func LoadBanner(bannerFont string) []string {
 	file, err := os.Open(bannerFont)
 
 	if err != nil {
-		log.Fatal()
+		fmt.Println("Error opening file")
 	}
 
 	defer file.Close()
@@ -19,13 +19,15 @@ func LoadBanner(bannerFont string) []string {
 	scanner := bufio.NewScanner(file)
 
 	var lines []string
+
 	for scanner.Scan() {
 
 		lines = append(lines, scanner.Text())
 	}
+
 	err = scanner.Err()
 	if err != nil {
-		log.Fatal()
+		fmt.Println("Error Scanner file")
 	}
 
 	return lines

@@ -1,25 +1,22 @@
 package main
 
-import (
-	"fmt"
-	"strings"
-)
+import "fmt"
 
 func render(input string, lines []string) {
 
-	result := strings.Split(input, `\n`)
-	
-	for i := 0; i < len(result); i++ {
-		for row := 0; row < 8; row++ {
+	for row := 1; row <= 8; row++ {
+		for _, r := range input {
 
-			for _, ch := range result[i] {
-
-				index := int(ch - 32)
-				start := index * 9
-				fmt.Println(lines[start+row])
-
+			if r < 32 || r > 126 {
+				continue
 			}
-			fmt.Println()
+			index := int(r - 32)
+			start := index * 9
+			if start+row < len(lines) {
+
+				fmt.Print(lines[start+row])
+			}
 		}
+		fmt.Println()
 	}
 }

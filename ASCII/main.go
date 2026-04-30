@@ -3,21 +3,32 @@ package main
 import (
 	"fmt"
 	"os"
+	"strings"
 )
 
 func main() {
 
 	if len(os.Args) != 3 {
-		fmt.Println("invalid input")
+		fmt.Println("invalid input, usage: go run 'input text' banner.txt")
+		return
 	}
 
 	input := os.Args[1]
-	bannerFont := os.Args[2]
+	banner := os.Args[2]
 
-	output := LoadBanner(bannerFont)
+	bannerFont := LoadBanner(banner)
 
-	fmt.Println(render(input, li))
+	result := strings.Split(input, `\n`)
 
+	for _, ch := range result {
+
+		if ch == "" {
+			fmt.Println()
+			continue
+		}
+		render(ch, bannerFont)
+
+	}
 }
 
 // func main() {
