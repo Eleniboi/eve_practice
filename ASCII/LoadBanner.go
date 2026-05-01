@@ -2,6 +2,7 @@ package main
 
 import (
 	"errors"
+	"fmt"
 	"os"
 	"strings"
 )
@@ -14,7 +15,10 @@ func Load_Banner(bannerFont string) (map[rune][]string, error) {
 		return nil, errors.New("Error reading file")
 
 	}
+	if len(file) == 0 {
 
+		return nil, errors.New("file is empty")
+	}
 	text := strings.Split(string(file), "\n")
 
 	text = text[1:]
@@ -27,6 +31,13 @@ func Load_Banner(bannerFont string) (map[rune][]string, error) {
 		banner[ch] = text[start:end]
 	}
 	return banner, nil
+}
+
+func main() {
+
+	banner := "standard.txt"
+
+	fmt.Println(Load_Banner(banner))
 }
 
 // func LoadBanner(bannerFont string) []string {

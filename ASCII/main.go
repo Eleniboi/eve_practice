@@ -1,35 +1,35 @@
 package main
 
-import (
-	"fmt"
-	"os"
-	"strings"
-)
+// import (
+// 	"fmt"
+// 	"os"
+// 	"strings"
+// )
 
-func main() {
+// func main() {
 
-	if len(os.Args) != 3 {
-		fmt.Println("invalid input, usage: go run 'input text' banner.txt")
-		return
-	}
+// 	if len(os.Args) != 3 {
+// 		fmt.Println("invalid input, usage: go run 'input text' banner.txt")
+// 		return
+// 	}
 
-	input := os.Args[1]
-	banner := os.Args[2]
+// 	input := os.Args[1]
+// 	banner := os.Args[2]
 
-	bannerFont := LoadBanner(banner)
+// 	bannerFont := LoadBanner(banner)
 
-	result := strings.Split(input, `\n`)
+// 	result := strings.Split(input, `\n`)
 
-	for _, ch := range result {
+// 	for _, ch := range result {
 
-		if ch == "" {
-			fmt.Println()
-			continue
-		}
-		render(ch, bannerFont)
+// 		if ch == "" {
+// 			fmt.Println()
+// 			continue
+// 		}
+// 		render(ch, bannerFont)
 
-	}
-}
+// 	}
+// }
 
 // func main() {
 
