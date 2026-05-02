@@ -12,7 +12,7 @@ func Load_Banner(bannerFont string) (map[rune][]string, error) {
 	file, err := os.ReadFile(bannerFont)
 
 	if err != nil {
-		return nil, errors.New("Error reading file")
+		return nil, fmt.Errorf("Error reading file: %w", err)
 
 	}
 	if len(file) == 0 {
