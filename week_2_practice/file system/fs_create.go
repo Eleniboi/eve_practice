@@ -37,7 +37,7 @@ func Createfile() {
 // this function rename file
 func renamefile() {
 
-	file, err := os.Create("temp.txt")
+	file, err := os.Create("user.txt")
 
 	if err != nil {
 		fmt.Println("error creating file")
@@ -46,7 +46,7 @@ func renamefile() {
 	}
 	defer file.Close()
 
-	err = os.Rename("temp.txt", "final.txt")
+	err = os.Rename("user.txt", "final.txt")
 
 	if err != nil{
 		fmt.Println("error renaming file, ", err)
@@ -69,6 +69,6 @@ func deleteFile(name string){
 
 func main() {
 
+	Createfile()
 	renamefile()
-	deleteFile("del.txt")
 }
