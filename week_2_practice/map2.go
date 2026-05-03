@@ -4,7 +4,7 @@ import (
 	"fmt"
 )
 
-func main() {
+func map2() {
 
 	//this function check 
 
