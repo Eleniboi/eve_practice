@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"os"
+	"time"
 )
 
 func main() {
@@ -11,17 +12,16 @@ func main() {
 
 	banner := "standard.txt"
 
-	bannerFont, _ := LoadBanner(banner)
+	result, _ := LoadBanner(banner)
 
-	result := render(input, bannerFont)
-
-	//for _, ch := range input {
+	art := render(input, result)
 
 	for i := 0; i < 8; i++ {
 
-		fmt.Print(result[i])
-		fmt.Println()
-	}
-	//}
+		time.Sleep(time.Second)
 
+		fmt.Print(art)
+		fmt.Println()
+
+	}
 }
