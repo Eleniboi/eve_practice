@@ -10,18 +10,21 @@ func main() {
 
 	input := os.Args[1]
 
-	banner := "standard.txt"
+	bannerFont := os.Args[2]
 
-	result, _ := LoadBanner(banner)
+	banner, err := LoadBanner(bannerFont)
 
-	art := render(input, result)
+	if err != nil {
+		fmt.Println("Error loading banner")
+		return
+	}
 
-	for i := 0; i < 8; i++ {
+	result := render(input, banner)
+
+	for i := 0; i < len(result); i++ {
 
 		time.Sleep(time.Second)
 
-		fmt.Print(art)
-		fmt.Println()
-
+		fmt.Println(result[i])
 	}
 }

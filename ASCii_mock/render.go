@@ -6,21 +6,18 @@ import (
 
 func render(input string, banner map[rune][]string) []string {
 
-	splitInput := strings.Split(input, `\n`)
-
 	var result []string
 	var build strings.Builder
-	for _, word := range splitInput {
 
-		for i := 0; i < 8; i++ {
+	for i := 0; i < 8; i++ {
 
-			for _, r := range word {
+		for _, r := range input {
 
-				build.WriteString(banner[r][i])
-			}
-			result = append(result, build.String())
-			build.Reset()
+			build.WriteString(banner[r][i])
 		}
+		result = append(result, build.String())
+		build.Reset()
 	}
+
 	return result
 }

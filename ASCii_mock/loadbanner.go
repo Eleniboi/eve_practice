@@ -20,6 +20,7 @@ func LoadBanner(bannerfile string) (map[rune][]string, error) {
 	}
 
 	fileLines := strings.Split(string(file), "\n")
+
 	fileLines = fileLines[1:]
 
 	var banner = make(map[rune][]string)
