@@ -19,11 +19,13 @@ func main() {
 		return
 	}
 
+	
 	splitInput := strings.Split(input, "\\n")
 
 	fileLines := strings.Split(strings.ReplaceAll(string(file), "\r\n", "\n"), "\n")
-	//fileLines = fileLines[1:]
 
+	
+	fmt.Println(len(fileLines))
 	var bannerFont = make(map[rune][]string)
 
 	for i := ' '; i <= '~'; i++ {
