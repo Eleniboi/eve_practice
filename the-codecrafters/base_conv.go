@@ -4,14 +4,27 @@ import (
 	"bufio"
 	"fmt"
 	"os"
+	"strconv"
+	"strings"
+	"time"
 )
 
 func help() {
 	fmt.Println("For Smooth Experience enter the following")
-	fmt.Println("convert  1E hex  ---> 30")
-	fmt.Println("convert  1010 bin ---> 10")
-	fmt.Println("Enter help for this same menu")
-	fmt.Println("Enter quit to exit the program")
+	time.Sleep(2 * time.Second)
+	fmt.Print("\rconvert  1E hex  ---> 30")
+	time.Sleep(2 * time.Second)
+	fmt.Print("\rconvert  1010 bin ---> 10")
+	time.Sleep(2 * time.Second)
+	fmt.Print("\rEnter help for this same menu")
+	time.Sleep(2 * time.Second)
+	fmt.Print("\rEnter quit to exit the program")
+	time.Sleep(2 * time.Second)
+	fmt.Print("\rEnter quit to exit the program.")
+	time.Sleep(1 * time.Second)
+	fmt.Print("\rEnter quit to exit the program..")
+	time.Sleep(1 * time.Second)
+	fmt.Print("\rEnter quit to exit the program...")
 
 }
 
@@ -36,6 +49,28 @@ func base() {
 		if input == "quit" {
 			fmt.Println("GoodBye!!")
 			break
+		}
+
+		part := strings.Fields(input)
+
+		convert := part[0]
+
+		if convert != "convert" {
+			fmt.Println("invalid input Enter help for guildline")
+			continue
+		}
+
+		BaseNum := part[1]
+		Base := part[2]
+
+		switch strings.ToLower(Base) {
+		case "hex":
+			n, err := strconv.ParseInt(BaseNum, 16, 64)
+			if err != nil {
+				fmt.Printf("%s is not a valid hex number", BaseNum)
+				continue
+			}
+			fmt.Println("Decimal = ", n)
 		}
 	}
 }
