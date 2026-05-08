@@ -19,7 +19,7 @@ func main() {
 		return
 	}
 
-	splitInput := strings.Split(input, "\\n")
+	//splitInput := strings.Split(input, "\\n")
 
 	fileLines := strings.Split(strings.ReplaceAll(string(file), "\r\n", "\n"), "\n")
 
@@ -32,16 +32,31 @@ func main() {
 		bannerFont[i] = fileLines[startindx:endindx]
 	}
 
-	for _, word := range splitInput {
+	var result []string 
+	var build strings.Builder
+	
 		for i := 0; i < 8; i++ {
-			for _, r := range word {
+			for _, r := range input {
 
-				fmt.Print(bannerFont[r][i])
+				build.WriteString(bannerFont[r][i])
 			}
-			fmt.Println()
+			result = append(result, build.String())
+			build.Reset()
 		}
+		//fmt.Println(result)
+		var done strings.Builder
+		var final string
+		for i := 0; i < len(result); i++{
+			done.WriteString(result[i]+"\n")
+			final = done.String()
+
+		}
+		fmt.Println(final)
+		err = os.WriteFile("result.txt", []byte(final), 0644)
 	}
-}
+
+//	err = os.WriteFile("result.txt", []byte())
+
 
 // var bannerFont = make(map[rune][]string)
 
