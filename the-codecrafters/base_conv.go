@@ -21,9 +21,9 @@ func help() {
 	fmt.Print("\rEnter quit to exit the program")
 	time.Sleep(2 * time.Second)
 	fmt.Print("\rEnter quit to exit the program.")
-	time.Sleep(1 * time.Second)
+	time.Sleep(300 * time.Millisecond)
 	fmt.Print("\rEnter quit to exit the program..")
-	time.Sleep(1 * time.Second)
+	time.Sleep(300 * time.Millisecond)
 	fmt.Print("\rEnter quit to exit the program...")
 
 }
@@ -36,6 +36,7 @@ func base() {
 	for scanner.Scan() {
 
 		fmt.Print(" > ")
+
 		input := scanner.Text()
 
 		if input == "" {
@@ -52,6 +53,12 @@ func base() {
 		}
 
 		part := strings.Fields(input)
+
+		if len(part) != 3 {
+
+			fmt.Println("invalid input: type help for guideline")
+			continue
+		}
 
 		convert := part[0]
 
@@ -71,6 +78,14 @@ func base() {
 				continue
 			}
 			fmt.Println("Decimal = ", n)
+		case "bin":
+			n, err := strconv.ParseInt(BaseNum, 2, 64)
+
+			if err != nil {
+				fmt.Printf("%s is not a valid bin number\n", err)
+				continue
+			}
+			fmt.Println("Decimal: ", n)
 		}
 	}
 }
