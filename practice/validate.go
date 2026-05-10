@@ -4,13 +4,13 @@ import "fmt"
 
 func validate(input string) (rune, error) {
 
-	for _, ch := range input {
+	var result rune
+	for _, r := range input {
 
-		if ch >= ' ' && ch <= '~' {
-			return ch, nil
-		} else {
-			return 0, fmt.Errorf(", %c is not a printable character", ch)
+		if r < ' ' || r > '~' {
+			return 0, fmt.Errorf(", %c is not a printable ascii character", r)
 		}
+		result = r
 	}
-	return 0, nil
+	return result, nil
 }
