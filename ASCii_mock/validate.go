@@ -1,11 +1,17 @@
 package main
 
-func validate(input string) (string, error) {
+import "fmt"
 
-	for _, r := range input {
+func validate(input string) (rune, error) {
 
-		if r >= 32 && r <= 126 {
+	var res rune
+	for _, ch := range input{
 
+		if ch >= ' ' && ch <= '~'{
+			return ch, nil
 		}
+
 	}
+	return 0, fmt.Errorf("%c is not a printable character", res)
 }
+
