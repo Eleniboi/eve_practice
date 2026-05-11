@@ -3,60 +3,69 @@ package main
 import (
 	"fmt"
 	"os"
-	"strings"
 )
 
 func main() {
 
+	banner := "standard.txt"
+	
 	input := os.Args[1]
 
-	banner := os.Args[2]
+	bannerFont, _ := LoadBanner(banner)
 
-	file, err := os.ReadFile(banner)
+	final := generateArt(input, bannerFont)
 
-	if err != nil {
-		fmt.Println("Error reading file")
-		return
-	}
+	fmt.Print(final)
+}
 
-	//splitInput := strings.Split(input, "\\n")
+// input := os.Args[1]
 
-	fileLines := strings.Split(strings.ReplaceAll(string(file), "\r\n", "\n"), "\n")
+// banner := os.Args[2]
 
-	//fmt.Println(len(fileLines)/9)
-	var bannerFont = make(map[rune][]string)
-	for i := ' '; i <= '~'; i++ {
-		startindx := int(i-32) * 9 + 1
-		endindx := startindx + 8
+// file, err := os.ReadFile(banner)
 
-		bannerFont[i] = fileLines[startindx:endindx]
-	}
+// if err != nil {
+// 	fmt.Println("Error reading file")
+// 	return
+// }
 
-	var result []string 
-	var build strings.Builder
-	
-		for i := 0; i < 8; i++ {
-			for _, r := range input {
+// //splitInput := strings.Split(input, "\\n")
 
-				build.WriteString(bannerFont[r][i])
-			}
-			result = append(result, build.String())
-			build.Reset()
-		}
-		//fmt.Println(result)
-		var done strings.Builder
-		var final string
-		for i := 0; i < len(result); i++{
-			done.WriteString(result[i]+"\n")
-			final = done.String()
+// fileLines := strings.Split(strings.ReplaceAll(string(file), "\r\n", "\n"), "\n")
 
-		}
-		fmt.Println(final)
-		err = os.WriteFile("result.txt", []byte(final), 0644)
-	}
+// //fmt.Println(len(fileLines)/9)
+// var bannerFont = make(map[rune][]string)
+// for i := ' '; i <= '~'; i++ {
+// 	startindx := int(i-32) * 9 + 1
+// 	endindx := startindx + 8
+
+// 	bannerFont[i] = fileLines[startindx:endindx]
+// }
+
+// var result []string
+// var build strings.Builder
+
+// 	for i := 0; i < 8; i++ {
+// 		for _, r := range input {
+
+// 			build.WriteString(bannerFont[r][i])
+// 		}
+// 		result = append(result, build.String())
+// 		build.Reset()
+// 	}
+// 	//fmt.Println(result)
+// 	var done strings.Builder
+// 	var final string
+// 	for i := 0; i < len(result); i++{
+// 		done.WriteString(result[i]+"\n")
+// 		final = done.String()
+
+// 	}
+// 	fmt.Println(final)
+// 	err = os.WriteFile("result.txt", []byte(final), 0644)
+// }
 
 //	err = os.WriteFile("result.txt", []byte())
-
 
 // var bannerFont = make(map[rune][]string)
 
