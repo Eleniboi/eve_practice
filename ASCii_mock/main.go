@@ -19,7 +19,7 @@ func main() {
 		return
 	}
 
-	result := render(input, banner)
+	result := RenderLine(input, banner)
 
 	for i := 0; i < len(result); i++ {
 

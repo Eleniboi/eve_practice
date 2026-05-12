@@ -19,6 +19,9 @@ func LoadBanner(bannerfile string) (map[rune][]string, error) {
 		return nil, fmt.Errorf("Banner file is empty")
 	}
 
+	if len(file) < 855{
+		return  nil, errors.New("Incomplete file content")
+	}
 	fileLines := strings.Split(string(file), "\n")
 
 	fileLines = fileLines[1:]

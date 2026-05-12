@@ -4,7 +4,7 @@ import (
 	"strings"
 )
 
-func render(input string, banner map[rune][]string) []string {
+func RenderLine(input string, banner map[rune][]string) []string {
 
 	var result []string
 	var build strings.Builder
