@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 	"os"
-	"time"
+	
 )
 
 func main() {
@@ -19,12 +19,7 @@ func main() {
 		return
 	}
 
-	result := RenderLine(input, banner)
+	result := GenerateArt(input, banner)
 
-	for i := 0; i < len(result); i++ {
-
-		time.Sleep(time.Second)
-
-		fmt.Println(result[i])
-	}
+	fmt.Print(result)
 }

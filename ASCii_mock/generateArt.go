@@ -29,16 +29,18 @@ func GenerateArt(input string, banner map[rune][]string) string {
 		return b.String()
 	}
 	for _, word := range siceINput {
-		
-		if word == "" {
-			if len(siceINput) == 2 && siceINput[len(siceINput)-1] == "" {
-				asciiTable := RenderLine(word, banner)
 
-				for i := 0; i < len(asciiTable); i++ {
-					b.WriteString(asciiTable[i] + "\n")
-				}
-				return b.String()
-			}
+		if word == "" {
+			// if len(siceINput) == 2 && siceINput[len(siceINput)-1] == "" {
+
+			// 	asciiTable := RenderLine(word, banner)
+
+			// 	for i := 0; i < len(asciiTable); i++ {
+			// 		b.WriteString(asciiTable[i] + "\n")
+
+			// 	}
+			// 	return b.String()
+			// }
 			b.WriteString("\n")
 			continue
 		}

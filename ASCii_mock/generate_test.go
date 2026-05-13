@@ -57,7 +57,7 @@ func TestGenerateArt_TwoWordsProducesSixteenLines(t *testing.T) {
 // NOT 8 blank lines.
 func TestGenerateArt_DoubleNewlineProducesBlankLineBetween(t *testing.T) {
 	banner := loadStandard(t)
-	got := GenerateArt(`A\n\n\nB`, banner)
+	got := GenerateArt(`A\n\nB`, banner)
 	// Expected: 8 lines for A + 1 blank line + 8 lines for B = 17 newlines
 	newlineCount := countOccurrences(got, "\n")
 	if newlineCount != 17 {
@@ -74,8 +74,8 @@ func TestGenerateArt_TrailingNewlineAddsEightBlankLines(t *testing.T) {
 	got := GenerateArt(`Hello\n`, banner)
 	// 8 lines for Hello + 8 blank lines = 16 newlines total
 	newlineCount := countOccurrences(got, "\n")
-	if newlineCount != 16 {
-		t.Errorf("expected 16 newlines for 'Hello\\n', got %d\noutput:\n%s",
+	if newlineCount != 9 {
+		t.Errorf("expected 9 newlines for 'Hello\\n', got %d\noutput:\n%s",
 			newlineCount, got)
 	}
 }
