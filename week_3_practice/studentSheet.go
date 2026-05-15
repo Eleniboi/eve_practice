@@ -54,17 +54,9 @@ func studentReport(Student_name string, scores []float64)string{
 
 	return fmt.Sprintf("%s | Average %.1f | Grade %s ", Student_name, report, Final)
 }
-//70 and above -> "A"
-//60 - 69 -> "B"
-// 50 - 59 -> "C"
-//50 Below "F"
-//
-func main() {
 
-	// score := []float64{89, 56, 55}
+// func main() {
 
-	// result, _ := AverageScore(score)
-	fmt.Println()
-	fmt.Println(studentReport("rtrt", []float64{4,4,33,}))
-	//fmt.Print(getGrade(120))
-}
+// 	fmt.Println()
+// 	fmt.Println(studentReport("pepe", []float64{4,4,33,}))
+// }
