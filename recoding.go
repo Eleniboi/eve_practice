@@ -11,6 +11,7 @@ func ValidateBanner(banner map[rune][]string) error {
 	if len(banner) != 95 {
 		return errors.New("Incomplete printable character")
 	}
+
 	for key, value := range banner {
 
 		if key < ' ' || key > '~' {
@@ -54,16 +55,28 @@ func TrimArtRows(rows []string) []string {
 
 func PadArtRows(rows []string, width int) []string {
 
-	var result []string
-	var build strings.Builder
+	var result = make([]string, len(rows))
 
-	for _, ch := range rows {
+	for i, ch := range rows {
 
-		if width < 8 && len(ch) < 8 {
-			build.WriteString(ch + " ")
+		current := len(ch)
+
+		if width <= 0 || current >= width {
+			result[i] = ch
+
+		} else if len(ch) < width {
+
+			ch = ch + strings.Repeat(" ", width-current)
+
+			result[i] = ch
 		}
-		result = append(result, build.String())
-		build.Reset()
 	}
 	return result
+}
+
+func main() {
+
+	rows := []string{"sam", "lo"}
+
+	fmt.Println(PadArtRows(rows, -1))
 }
