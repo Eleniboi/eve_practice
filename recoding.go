@@ -74,6 +74,16 @@ func PadArtRows(rows []string, width int) []string {
 	return result
 }
 
+func StackTwo(top []string, bottom []string) []string {
+
+	var result []string
+
+	result = append(result, top...)
+	result = append(result, bottom...)
+
+	return result
+}
+
 func main() {
 
 	rows := []string{"sam", "lo"}
