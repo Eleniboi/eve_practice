@@ -76,11 +76,21 @@ func PadArtRows(rows []string, width int) []string {
 
 func StackTwo(top []string, bottom []string) []string {
 
-	var result []string
+	result := make([]string, len(top)+len(bottom))
 
-	result = append(result, top...)
-	result = append(result, bottom...)
+	copy(result, top)
+	copy(result[len(top):], bottom)
+	return result
+}
 
+func StackAll(block [][]string)[]string{
+
+	result := []string{}
+
+	for _, ch := range block{
+
+		result = append(result, ch...)
+	}
 	return result
 }
 
