@@ -48,7 +48,8 @@ func GenerateArt(input string, banner map[rune][]string) string {
 		asciiTable := RenderLine(word, banner)
 
 		for i := 0; i < len(asciiTable); i++ {
-			b.WriteString(asciiTable[i] + "\n")
+			b.WriteString(asciiTable[i])
+			b.WriteString("\n")
 		}
 	}
 	return b.String()
